@@ -1,15 +1,14 @@
 import json
 import re
-from datetime import datetime, date
+from datetime import datetime
 
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.conf import settings
 
-from .serializers import MovieSerializer, MovieVariantSerializer, MovieFormatSerializer, \
-                            MovieRatingSerializer, MovieCastSerializer
-from .models import Movie, MovieVariant, MovieFormat, MovieRating, MovieCast
+from .serializers import MovieSerializer, MovieVariantSerializer
+from .models import Movie, MovieVariant
 from schedules.models import MovieSchedule
 
 

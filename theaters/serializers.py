@@ -14,12 +14,12 @@ class TheaterSerializer(serializers.ModelSerializer):
 
 class CinemaSerializer(serializers.ModelSerializer):
     theater = TheaterSerializer()
+
     class Meta:
         model = Cinema
         fields = ['code', 'name', 'theater',]
 
     def create(self, validated_data):
-        print("<<<<<<<<<<", validated_data)
         theater = validated_data.pop('theater')
         theater, created = Theater.objects.update_or_create(code=theater.get('code'))
         validated_data.update({'theater': theater})
